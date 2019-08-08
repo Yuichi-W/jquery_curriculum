@@ -97,6 +97,79 @@
       // .data('') DOM要素にあるdata-~を取得できる
       // .change() セレクトボックスの値の変更をキャッチする関数
       // $().each() DOM要素を1つずつループ処理をする（ループ内で$(this)を使うと要素がひとつずつ取得できる）
-    </script>
+      
+      // ----------------解答1---------------------------
+      $('.select').change(function() {
+        var v = $(this).val();
+        if(v === "all"){
+          $('.list li').show();
+        }else{
+          $('.list li').each(function(index, item) {
+            console.log(index, item);
+            if(v === $(item).data("category-type")){
+              $(item).show();
+            }else{
+              $(item).hide();
+            }
+          });
+        }
+      });
+      
+
+      // $(".select").change(function(){ // .change()使用
+      //     var v = $(this).val(); // .val()使用
+      //     if(v == "all"){
+      //       $('ul.list li').each(function(){ $(this).show() }); // .each()使用
+      //     } else {
+      //       $('ul.list li').each(function(){
+      //         if(v == $(this).data("category-type")){ // .data()使用
+      //           $(this).show(); // .show()使用
+      //         } else {
+      //           $(this).hide(); // .hide()使用
+      //         }
+      //       });
+      //     }
+      //   });
+      // ----------------解答２---------------------------
+        // $(function() {ul.list li
+        //   $(".select").change(function(){ // .change()使用
+        //     var v=$(this).val(); // .val()使用
+        //     if(v=="all"){
+        //       $('ul.list li').each(function(){ $(this).show() }); // .each()使用
+        //     } else {
+        //       $('ul.list li').each(function(){
+        //         if($(this).data("category-type")==v){ // .data()使用
+        //           $(this).show(); // .show()使用
+        //         } else {
+        //           $(this).hide(); // .hide()使用
+        //         }
+        //       });
+        //     }
+        //   });
+        // });
+
+      
+// 　　　　Allが出ない
+      // $(function() {
+      //   $(".select").on('change',function(){
+      //     var v=$(this).val();
+      //     $('ul.list li').toggle(v=="All").filter('[data-category-type='+v+']').show();
+      //   }).trigger('change');
+      // });
+
+      // All以外でない
+      // $(".select").click('change',function() {
+      //     var v = $(this).val();
+      //     $('ul.list li').toggle(v=="All").filter('[data-category-type='+v+']').show();
+      //   });
+      //   .trigger('change');
+        
+
+
+
+
+        
+        
+        </script>
   </body>
-</html>
+  </html>
